@@ -172,9 +172,11 @@ public class JModelButton extends JButton{
 		this.setBorderPainted( false );
 		this.setFocusable( false );
 		this.setOpaque(false);
+		this.setHorizontalTextPosition( SwingConstants.CENTER );
 		this.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		this.setBackground(bg);
 		this.setForeground(fg);
+
 	}
 
 	public JModelButton(int arcW, int arcH,String key, Font font, Color bg, Color fg) {

@@ -16,6 +16,8 @@ public class Constant {
     public static final String T_SIMULATOR = "Simulador";
 
 
+    public static final String[] H_PRODUCTS = {"ID","Nombre","Prioridad","Tiempo atencion","Hora de llegada"};
+
     //Colors
     public static final Color COLOR_WHITE = Color.decode("#ffffff") ;
     public static final Color COLOR_BLACK = Color.decode("#000000") ;

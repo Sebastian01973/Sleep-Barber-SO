@@ -16,6 +16,7 @@ public class JModelLabel extends JLabel{
 
 	}
 
+
 	/**
 	 * @descprtion Este metodo nos agrega una imagen a un label
 	 * @param

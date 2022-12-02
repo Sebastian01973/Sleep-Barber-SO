@@ -27,11 +27,9 @@ public class Window extends JFrame {
 
         mainPanel = new MainPanel(listener);
         this.getContentPane().add(mainPanel, BorderLayout.CENTER);
+
     }
 
-    public String getNameCustomer(){
-        return mainPanel.getNameCustomer();
-    }
 
     public void setVisibleSplash(boolean active){
         this.jDialogSplash.setVisible(active);
