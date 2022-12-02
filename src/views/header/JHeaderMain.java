@@ -67,7 +67,6 @@ public class JHeaderMain extends JPanel {
 
         this.add(center,BorderLayout.CENTER);
 
-
     }
 
     public void setTimeSimulation(int time){

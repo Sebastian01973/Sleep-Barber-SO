@@ -9,6 +9,7 @@ public class Constant {
 
     //Images
     public static final String IMG_LOGO = "/logo.png";
+    public static final String IMG_SLEEP_BARBER = "/sleep.gif";
 
     //Text
     public static final String TITLE_STORE = "Barberia de Pepe";

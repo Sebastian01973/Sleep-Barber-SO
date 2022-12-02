@@ -22,10 +22,10 @@ public class JModelLabel extends JLabel{
 	 * @param
 	 */
 	public JModelLabel(String imagePath) {
-		ImageIcon image;
 		this.setAlignmentX(CENTER_ALIGNMENT);
 		this.setSize(160,160);
 		this.setBorder(null);
+		ImageIcon image;
 		image = new ImageIcon(getClass().getResource(imagePath));
 		Icon icono = new ImageIcon(image.getImage().getScaledInstance(this.getWidth(), this.getHeight(), 1));
 		this.setIcon(icono);
@@ -37,11 +37,6 @@ public class JModelLabel extends JLabel{
 		this.setBorder(null);
 		image = new ImageIcon(getClass().getResource(imagePath));
 		Icon icono = new ImageIcon(image.getImage().getScaledInstance(this.getWidth(), this.getHeight(), 1));
-		this.setIcon(icono);
-	}
-
-	public void setIconImageProduct(ImageIcon image) {
-		Icon icono = image;
 		this.setIcon(icono);
 	}
 
@@ -63,7 +58,6 @@ public class JModelLabel extends JLabel{
 
 	public JModelLabel(String imagePath, int width, int height) {
 		ImageIcon image;
-		this.setOpaque(false);
 		image = new ImageIcon(getClass().getResource(imagePath));
 		Icon icon = new ImageIcon(image.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH));
 		this.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
