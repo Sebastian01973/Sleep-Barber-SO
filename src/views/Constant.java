@@ -12,6 +12,9 @@ public class Constant {
 
     //Text
     public static final String TITLE_STORE = "Barberia de Pepe";
+    public static final String EXIT = "Salir";
+    public static final String T_SIMULATOR = "Simulador";
+
 
     //Colors
     public static final Color COLOR_WHITE = Color.decode("#ffffff") ;
@@ -27,4 +30,14 @@ public class Constant {
     public static final Color COLOR_BLUE_DARK_2 = Color.decode("#232f3e") ;
     public static final Color COLOR_ORANGE_1 = Color.decode("#ff9900") ;
     public static final Color COLOR_GREEN_1 = Color.decode("#5eb95e") ;
+
+
+    //Fonts
+    public static final Font FONT_ARIAL_ROUNDER_17 = new Font("Arial Rounded MT Bold", Font.PLAIN, 17);
+    public static final Font FONT_ARIAL_ROUNDER_20 = new Font("Arial Rounded MT Bold", Font.PLAIN, 20);
+    public static final Font FONT_ARIAL_ROUNDER_25 = new Font("Arial Rounded MT Bold", Font.PLAIN, 25);
+    public static final Font FONT_ARIAL_ROUNDER_25_B = new Font("Arial Rounded MT Bold", Font.BOLD, 25);
+    public static final Font FONT_ARIAL_ROUNDER_35_B = new Font("Arial Rounded MT Bold", Font.BOLD, 30);
+    public static final Font FONT_ARIAL_ROUNDER_30 = new Font("Arial Rounded MT Bold", Font.PLAIN, 30);
+    public static final Font FONT_ARIAL_ROUNDER_15 = new Font("Arial Rounded MT Bold", Font.PLAIN, 15);
 }

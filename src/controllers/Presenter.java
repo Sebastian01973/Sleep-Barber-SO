@@ -9,11 +9,12 @@ import java.awt.event.ActionListener;
 
 public class Presenter implements ActionListener {
 
-    private Window view;
+    private Window window;
     private BarberShop shop;
 
     public Presenter() {
-        this.view = new Window(this);
+        this.window = new Window(this);
+        window.setVisibleSplash(true);
         shop = new BarberShop(4);
         new Barber("JUAN", shop).start();
     }
@@ -22,7 +23,8 @@ public class Presenter implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (Command.valueOf(e.getActionCommand())) {
-
+            case B_EXIT -> System.exit(0);
+            case START_SIMULATION -> {window.setVisibleSplash(false); window.setVisible(true); }
         }
     }
 
