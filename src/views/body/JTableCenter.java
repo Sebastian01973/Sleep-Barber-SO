@@ -36,10 +36,29 @@ public class JTableCenter extends JPanel {
     public void initHeaderTable(){
         JPanel headerTable = new JPanel();
         headerTable.setLayout(new FlowLayout(FlowLayout.CENTER));
-        headerTable.setBackground(Constant.COLOR_BLUE_DARK_2);
+        headerTable.setBackground(Constant.COLOR_WHITE);
         headerTable.setBorder(BorderFactory.createEmptyBorder(2,0,6,0));
 
+        maxChairs = new JModelLabel("Maximo Sillas: 1",Constant.FONT_ARIAL_ROUNDER_17,Constant.COLOR_WHITE,Constant.COLOR_BLACK);
+        maxChairs.setColorPaint(Constant.COLOR_WHITE);
+        maxChairs.setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
+        headerTable.add(maxChairs);
 
+        headerTable.add(Box.createRigidArea(new Dimension(20, 0)));
+
+        occupiedChairs = new JModelLabel("Sillas Ocupadas: 1",Constant.FONT_ARIAL_ROUNDER_17,Constant.COLOR_WHITE,Constant.COLOR_BLACK);
+        occupiedChairs.setColorPaint(Constant.COLOR_WHITE);
+        occupiedChairs.setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
+        headerTable.add(occupiedChairs);
+
+        headerTable.add(Box.createRigidArea(new Dimension(20, 0)));
+
+        availableChairs = new JModelLabel("Sillas Disponibles: 1",Constant.FONT_ARIAL_ROUNDER_17,Constant.COLOR_WHITE,Constant.COLOR_BLACK);
+        availableChairs.setColorPaint(Constant.COLOR_WHITE);
+        availableChairs.setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
+        headerTable.add(availableChairs);
+
+        this.add(headerTable,BorderLayout.NORTH);
 
     }
     private void initComponents(ActionListener actionListener){

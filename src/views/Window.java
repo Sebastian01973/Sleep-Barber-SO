@@ -16,8 +16,8 @@ public class Window extends JFrame {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setTitle( Constant.TITLE_STORE);
 //        this.setExtendedState(MAXIMIZED_BOTH);
-        this.setSize(new Dimension((int) (Constant.SCREEN_SIZE.getWidth()*0.6),(int) (Constant.SCREEN_SIZE.getHeight()*0.6)));
-        this.setMinimumSize(new Dimension((int) (Constant.SCREEN_SIZE.getWidth()*0.6),(int) (Constant.SCREEN_SIZE.getHeight()*0.6)));
+        this.setSize(new Dimension((int) (Constant.SCREEN_SIZE.getWidth()*0.7),(int) (Constant.SCREEN_SIZE.getHeight()*0.7)));
+        this.setMinimumSize(new Dimension((int) (Constant.SCREEN_SIZE.getWidth()*0.7),(int) (Constant.SCREEN_SIZE.getHeight()*0.7)));
         initComponents(listener);
         this.setVisible(false);
     }
