@@ -1,6 +1,7 @@
 package models;
 
 import java.util.Comparator;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 public class Customer extends Thread implements Comparable<Customer> {
@@ -13,9 +14,11 @@ public class Customer extends Thread implements Comparable<Customer> {
      * Specifies the name of the customer entity.
      */
     private final String name;
+
     /**
      * Specifies the store that the customer will enter.
      */
+
     private final BarberShop shop;
 
     /**
@@ -23,10 +26,23 @@ public class Customer extends Thread implements Comparable<Customer> {
      */
     private boolean state = false;
 
+    private int timeAction;
+
     public Customer(int id, String name, BarberShop shop) {
         this.id = id;
         this.name = name;
         this.shop = shop;
+    }
+
+    public Customer(int id, String name, BarberShop shop,int timeAction) {
+        this.id = id;
+        this.name = name;
+        this.shop = shop;
+        this.timeAction = timeAction;
+    }
+
+    public int generateTimeAction(){
+        return (new Random().nextInt(timeAction)) * 1000;
     }
 
     public void run() {

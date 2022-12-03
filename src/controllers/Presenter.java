@@ -40,11 +40,13 @@ public class Presenter implements ActionListener {
         }
     }
 
-    private void startSimulation() {
-        //Donde va toda la simulacion
+    public void getDatesSimulation(){
+
     }
 
+    private void startSimulation() {
 
-
+        //Donde va toda la simulacion
+    }
 
 }
