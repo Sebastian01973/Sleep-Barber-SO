@@ -16,7 +16,7 @@ public class Presenter implements ActionListener {
         this.window = new Window(this);
         window.setVisibleSplash(true);
         shop = new BarberShop(4);
-        new Barber("JUAN", shop).start();
+        new Barber("JUAN", 4,shop).start();
     }
 
 
