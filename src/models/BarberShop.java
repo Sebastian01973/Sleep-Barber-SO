@@ -5,47 +5,48 @@ import java.util.PriorityQueue;
 
 public class BarberShop {
 
-    private int numSeats;
+    /**
+     * Number of seats
+     */
+    private final int numSeats;
+    /**
+     * List of customers who are sitting in the store.
+     */
+    private final PriorityQueue<Customer> customersInShop;
+    /**
+     * List of customers who are in the store.
+     */
+    private final ArrayList<Customer> listCustomers;
+    /**
+     * List of customers who left the store.
+     */
+    private final ArrayList<Customer> listCustomerExit;
     private boolean done = false;
-    private ArrayList<Customer> listCustomers;
-    private ArrayList<Customer> listCustomerExit;
-    private ArrayList<Customer> customersWithOutHaircut;
 
-    private PriorityQueue<Customer> customersInShop;
-
+    /**
+     * @param numSeats Number of chairs the store has.
+     */
     public BarberShop(int numSeats) {
         this.numSeats = numSeats;
         this.listCustomers = new ArrayList<>();
         this.listCustomerExit = new ArrayList<>();
-        this.customersWithOutHaircut = new ArrayList<>();
         this.customersInShop = new PriorityQueue<>();
     }
 
+    /**
+     * @param customer Add the customer to the list of customers entering the store.
+     */
     public synchronized void enterCustomer(Customer customer) {
         notifyAll();
         listCustomers.add(customer);
-
     }
 
-    public synchronized boolean validateChair(Customer customer) {
-        notifyAll();
-        if (customersInShop.size() >= numSeats) {
-            customersWithOutHaircut.add(customer);
-            return false;
-        }
-        return true;
-    }
-
+    /**
+     * @param customer Customer who will be served in the store.
+     * @return Returns true if the client was attacked successfully and false if the client was not attended.
+     */
     public synchronized boolean getHaircut(Customer customer) {
-        notifyAll();
-        while (customersInShop.size() == numSeats) {
-            listCustomerExit.add(customer);
-            return false;
-        }
-
-        customersInShop.add(customer);
-        System.out.println("Seats available: " + (numSeats - customersInShop.size()));
-
+        if (validateSeats(customer)) return false;
         while (customersInShop.contains(customer)) {
             try {
                 wait();
@@ -53,8 +54,7 @@ public class BarberShop {
                 throw new RuntimeException(e);
             }
         }
-        notifyAll(); // wake the barber!
-        // exit protocol
+        notifyAll(); // wake up the barber!
         while (!done) {
             try {
                 wait();
@@ -67,6 +67,25 @@ public class BarberShop {
         return true;
     }
 
+    /**
+     * @param customer Customer who is in the store.
+     * @return Returns true if the number of chairs is equal to the number of users that are in the store.
+     * @desciption In case the number of chairs in the store is equal to the number of chairs, the customer who entered leaves the store and is added to the list of exit users. Conversely, if the user can sit in a chair, the customer is added to the list of waiting users.
+     */
+    private boolean validateSeats(Customer customer) {
+        notifyAll();
+        if (customersInShop.size() == numSeats) {
+            listCustomerExit.add(customer);
+            return true;
+        }
+        customersInShop.add(customer);
+        return false;
+    }
+
+    /**
+     * @param customer Customer who finished the cut in the store.
+     * @desciption The method is for the customer output, so its status as a customer changes to true which means that their haircut was done correctly. Customer who finished the cut in the store.
+     */
     public synchronized void finishHaircut(Customer customer) {
         done = true;
         customer.setState(true);
@@ -82,35 +101,45 @@ public class BarberShop {
     }
 
 
+    /**
+     * @return Returns the next customer to be served.
+     * @desciption Through the priority list of clients, the first one on this list is obtained, but if there is no list of waiting clients, the barber sleeps.
+     */
     public synchronized Customer getNextCustomer() {
         notifyAll();
-        while (customersInShop.size() == 0) {
+        while (isSeatsEmpty()) {
             try {
-                wait();
+                wait(); // Barber is sleeping.
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
         }
         notifyAll();
-
         Customer customer = customersInShop.poll();
         listCustomerExit.add(customer);
         return customer;
     }
 
-    public synchronized int getNumSeats() {
-        notifyAll();
+    /**
+     * @return Returns true if the seats are empty.
+     */
+    private boolean isSeatsEmpty() {
+        return customersInShop.size() == 0;
+    }
+
+
+    /**
+     * @return Returns true if there are seats available.
+     */
+    public int getSeatsAvailable() {
         return numSeats - customersInShop.size();
     }
 
     public ArrayList<Customer> getListCustomersExit() {
-//        notifyAll();
         return listCustomerExit;
     }
 
     public ArrayList<Customer> getListCustomers() {
-//        notifyAll();
         return listCustomers;
     }
-
 }

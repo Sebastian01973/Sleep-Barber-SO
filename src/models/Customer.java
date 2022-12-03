@@ -5,10 +5,22 @@ import java.util.concurrent.TimeUnit;
 
 public class Customer extends Thread implements Comparable<Customer> {
 
-    private int id;
-    private String name;
-    private BarberShop shop;
+    /**
+     * Specifies the primary key of the customer entity.
+     */
+    private final int id;
+    /**
+     * Specifies the name of the customer entity.
+     */
+    private final String name;
+    /**
+     * Specifies the store that the customer will enter.
+     */
+    private final BarberShop shop;
 
+    /**
+     * Specifies the status if the customer was served or not.
+     */
     private boolean state = false;
 
     public Customer(int id, String name, BarberShop shop) {
@@ -24,10 +36,8 @@ public class Customer extends Thread implements Comparable<Customer> {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-//        boolean validateChair = shop.validateChair(this);
         boolean result = shop.getHaircut(this);
         exit(result);
-//        shop.exitCustomer(this);
     }
 
     private void enterToShop() {
@@ -48,27 +58,33 @@ public class Customer extends Thread implements Comparable<Customer> {
         this.state = state;
     }
 
+    /**
+     * @return Returns the state of the customer.
+     */
     public boolean getStateCustomer() {
         return this.state;
     }
 
+    /**
+     * @return Get a number of the customer.
+     */
     public int getIdCustomer() {
         return this.id;
     }
 
+    /**
+     * @return Name of the customer.
+     */
     public String getNameCustomer() {
         return this.name;
     }
 
+    /**
+     * @param customer the object to be compared.
+     * @return A negative integer, zero, or a positive integer as this object is less than, equal to, or greater than the specified object.
+     */
     @Override
-    public int compareTo(Customer employee) {
-        if(this.getIdCustomer() > employee.getIdCustomer()) {
-            return 1;
-        } else if (this.getIdCustomer() < employee.getIdCustomer()) {
-            return -1;
-        } else {
-            return 0;
-        }
+    public int compareTo(Customer customer) {
+        return Integer.compare(this.getIdCustomer(), customer.getIdCustomer());
     }
-
 }
