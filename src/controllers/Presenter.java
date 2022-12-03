@@ -24,10 +24,14 @@ public class Presenter implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         switch (Command.valueOf(e.getActionCommand())) {
             case B_EXIT -> System.exit(0);
-            case START_SIMULATION -> {window.setVisibleSplash(false); window.setVisible(true); }
-            case CLIENT_ATTENTION -> openTableAttention();
-            case CLIENT_NO_ATTENTION -> openTableNoAttention();
-            case STADISTICS -> openDialogStatistic();
+            case START_SIMULATION -> {
+                startSimulation();
+                window.setVisibleSplash(false);
+                window.setVisible(true);
+            }
+            case CLIENT_ATTENTION -> window.setVisibleClientAttention(true);
+            case CLIENT_NO_ATTENTION -> window.setVisibleClientNoAttention(true);
+            case STADISTICS -> window.setVisibleStatistic(true);
             case CANCEL_DIALOG -> {
                 window.setVisibleClientAttention(false);
                 window.setVisibleClientNoAttention(false);
@@ -36,14 +40,9 @@ public class Presenter implements ActionListener {
         }
     }
 
-    private void openDialogStatistic() {
+    private void startSimulation() {
+        //Donde va toda la simulacion
     }
 
-    private void openTableNoAttention() {
-    }
-
-    private void openTableAttention() {
-        window.setVisibleClientAttention(true);
-    }
 
 }

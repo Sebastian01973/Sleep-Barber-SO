@@ -11,6 +11,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class ClientAttention extends JDialog {
 
@@ -52,4 +53,13 @@ public class ClientAttention extends JDialog {
 
         this.add(panelCenter);
     }
+
+    public void addRowTableAttentionClient(Object[] vector){
+        jTableModel.addRowTable(vector);
+    }
+
+    public void refreshTableAttentionClient(ArrayList<Object[]> matrix){
+        jTableModel.addElementToTable(matrix);
+    }
+
 }

@@ -8,6 +8,7 @@ import views.statistic.JDialogStatistic;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class Window extends JFrame {
 
@@ -69,6 +70,21 @@ public class Window extends JFrame {
 
     public void setVisibleStatistic(boolean status){
         jDialogStatistic.setVisible(status);
+    }
+
+    public void addRowTableAttentionClient(Object[] vector){
+        clientAttention.addRowTableAttentionClient(vector);
+    }
+    public void refreshTableAttentionClient(ArrayList<Object[]> matrix){
+        clientAttention.refreshTableAttentionClient(matrix);
+    }
+
+    public void addRowTableAttentionNoClient(Object[] vector){
+        clientNoAttention.addRowTableAttentionNoClient(vector);
+    }
+
+    public void refreshTableAttentionNoClient(ArrayList<Object[]> matrix){
+        clientNoAttention.refreshTableAttentionNoClient(matrix);
     }
 
 }

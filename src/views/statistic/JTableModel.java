@@ -72,18 +72,13 @@ public class JTableModel extends JPanel {
 
     public void addElementToTable(ArrayList<Object[]> matrix){
         cleanRowsTable();
-        dtmElements.setColumnIdentifiers(Constant.H_PRODUCTS);
+        dtmElements.setColumnIdentifiers(Constant.CLIENTS);
         this.centerText();
-//        UtilitiesViews.getModelColumn(jtElements, 0, 75, 75, 75);
-//        UtilitiesViews.getModelColumn(jtElements, 2, 55, 55, 55);
         for (Object[] objects : matrix) {
-            addElementToTable(objects);
+            addRowTable(objects);
         }
     }
 
-    public void addElementToTable(Object[] vector){
-        dtmElements.addRow(vector);
-    }
 
     public void addRowsToTable(ArrayList<Object[]> matrix, String[] newHeaders){
         cleanRowsTable();
