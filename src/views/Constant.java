@@ -25,6 +25,7 @@ public class Constant {
 
 
     public static final String[] H_PRODUCTS = {"ID","Nombre","Prioridad","Tiempo atencion","Hora de llegada"};
+    public static final String[] CLIENTS = {"ID","Prioridad","Tiempo atencion","Hora de llegada"};
 
     //Colors
     public static final Color COLOR_WHITE = Color.decode("#ffffff") ;

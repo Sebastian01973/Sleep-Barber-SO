@@ -28,6 +28,11 @@ public class Presenter implements ActionListener {
             case CLIENT_ATTENTION -> openTableAttention();
             case CLIENT_NO_ATTENTION -> openTableNoAttention();
             case STADISTICS -> openDialogStatistic();
+            case CANCEL_DIALOG -> {
+                window.setVisibleClientAttention(false);
+                window.setVisibleClientNoAttention(false);
+                window.setVisibleStatistic(false);
+            }
         }
     }
 
@@ -38,7 +43,7 @@ public class Presenter implements ActionListener {
     }
 
     private void openTableAttention() {
-        
+        window.setVisibleClientAttention(true);
     }
 
 }

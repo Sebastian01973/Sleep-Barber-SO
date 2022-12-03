@@ -37,7 +37,6 @@ public class Window extends JFrame {
 
         mainPanel = new MainPanel(listener);
         this.getContentPane().add(mainPanel, BorderLayout.CENTER);
-
     }
 
 
@@ -59,6 +58,17 @@ public class Window extends JFrame {
 
     public void setStateBarberLa1bel(String text){
         mainPanel.setStateBarberLa1bel(text);
+    }
+
+    public void setVisibleClientAttention(boolean status){
+        clientAttention.setVisible(status);
+    }
+    public void setVisibleClientNoAttention(boolean status){
+        clientNoAttention.setVisible(status);
+    }
+
+    public void setVisibleStatistic(boolean status){
+        jDialogStatistic.setVisible(status);
     }
 
 }
