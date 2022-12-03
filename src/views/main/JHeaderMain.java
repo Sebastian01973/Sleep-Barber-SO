@@ -1,9 +1,8 @@
-package views.header;
+package views.main;
 
 import controllers.Command;
 import views.Constant;
 import views.models.JModelButton;
-import views.models.JModelButtonMenu;
 import views.models.JModelLabel;
 
 import javax.swing.*;

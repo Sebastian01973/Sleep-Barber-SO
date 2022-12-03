@@ -1,9 +1,9 @@
 package views;
 
-import views.barber.JBarberMain;
-import views.body.JTableCenter;
-import views.door.JDoorMain;
-import views.header.JHeaderMain;
+import views.main.JBarberMain;
+import views.main.JTableCenter;
+import views.main.JDoorMain;
+import views.main.JHeaderMain;
 
 import javax.swing.*;
 import java.awt.*;

@@ -25,7 +25,20 @@ public class Presenter implements ActionListener {
         switch (Command.valueOf(e.getActionCommand())) {
             case B_EXIT -> System.exit(0);
             case START_SIMULATION -> {window.setVisibleSplash(false); window.setVisible(true); }
+            case CLIENT_ATTENTION -> openTableAttention();
+            case CLIENT_NO_ATTENTION -> openTableNoAttention();
+            case STADISTICS -> openDialogStatistic();
         }
+    }
+
+    private void openDialogStatistic() {
+    }
+
+    private void openTableNoAttention() {
+    }
+
+    private void openTableAttention() {
+        
     }
 
 }

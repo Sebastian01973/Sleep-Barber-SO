@@ -1,6 +1,9 @@
 package views;
 
 import views.splash.JDialogSplash;
+import views.statistic.ClientAttention;
+import views.statistic.ClientNoAttention;
+import views.statistic.JDialogStatistic;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,6 +13,9 @@ public class Window extends JFrame {
 
     private MainPanel mainPanel;
     private JDialogSplash jDialogSplash;
+    private ClientAttention clientAttention;
+    private ClientNoAttention clientNoAttention;
+    private JDialogStatistic jDialogStatistic;
 
     public Window(ActionListener listener) {
         this.setIconImage( new ImageIcon(getClass().getResource( Constant.IMG_LOGO)).getImage());
@@ -25,6 +31,9 @@ public class Window extends JFrame {
     public void initComponents(ActionListener listener){
 
         jDialogSplash = new JDialogSplash(listener,this);
+        jDialogStatistic = new JDialogStatistic(listener,this);
+        clientAttention = new ClientAttention(listener,this);
+        clientNoAttention = new ClientNoAttention(listener,this);
 
         mainPanel = new MainPanel(listener);
         this.getContentPane().add(mainPanel, BorderLayout.CENTER);
