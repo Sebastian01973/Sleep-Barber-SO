@@ -17,10 +17,10 @@ public class Test2 {
     public static void main(String[] args) {
 
         BarberShop shop = new BarberShop(NUM_SEATS);
-        new Barber("Barber1", shop).start();
+        new Barber("Barber1",4, shop).start();
 
         for (int i = 0; i < NUM_CUST; i++)
-            new Customer(i, "Customer " + i, shop).start();
+//            new Customer(i, priority, "Customer " + i, shop).start();
 
 
         try {
