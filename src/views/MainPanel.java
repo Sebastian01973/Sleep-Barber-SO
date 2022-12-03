@@ -8,6 +8,7 @@ import views.main.JHeaderMain;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class MainPanel extends JPanel {
 
@@ -51,5 +52,12 @@ public class MainPanel extends JPanel {
         jBarberMain.setStateBarberLa1bel(text);
     }
 
+    public void setMaxChairs(int maxChairs) {
+        jTableCenter.setMaxChairs(maxChairs);
+    }
 
+
+    public void addElementToTable(ArrayList<Object[]> matrix) {
+        jTableCenter.addElementToTable(matrix);
+    }
 }

@@ -1,7 +1,6 @@
 package models;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.PriorityQueue;
 
 public class BarberShop {
@@ -31,6 +30,7 @@ public class BarberShop {
 
     private int occupiedSeats;
     private boolean done = false;
+    private boolean barberSleeping ;
 
     /**
      * @param numSeats Number of chairs the store has.
@@ -42,6 +42,7 @@ public class BarberShop {
         this.customersInShop = new PriorityQueue<>();
         this.numSeatsAvailable = numSeats;
         this.occupiedSeats = 0;
+        this.barberSleeping = false;
     }
 
     /**
@@ -97,7 +98,7 @@ public class BarberShop {
     /**
      * @param customer Customer who is in the store.
      * @return Returns true if the number of chairs is equal to the number of users that are in the store.
-     * @desciption In case the number of chairs in the store is equal to the number of chairs, the customer who entered leaves the store and is added to the list of exit users. Conversely, if the user can sit in a chair, the customer is added to the list of waiting users.
+     * @description In case the number of chairs in the store is equal to the number of chairs, the customer who entered leaves the store and is added to the list of exit users. Conversely, if the user can sit in a chair, the customer is added to the list of waiting users.
      */
     private boolean validateSeats(Customer customer) {
         notifyAll();
@@ -137,12 +138,14 @@ public class BarberShop {
         notifyAll();
         while (isSeatsEmpty()) {
             try {
+                barberSleeping = true;
                 wait(); // Barber is sleeping.
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
         }
         notifyAll();
+        barberSleeping = false;
         Customer customer = customersInShop.poll();
         listCustomerExit.add(customer);
         return customer;
@@ -155,27 +158,40 @@ public class BarberShop {
         return customersInShop.size() == 0;
     }
 
-    public ArrayList<Customer> getListCustomersExit() {
+    public synchronized ArrayList<Customer> getListCustomersExit() {
+        notifyAll();
         return listCustomerExit;
     }
+
 
     public ArrayList<Customer> getListCustomers() {
         return listCustomers;
     }
 
 
+    public ArrayList<Object[]> takeInfoCustomerShop() {
+        ArrayList<Object[]> infoCustomer = new ArrayList<>();
+        for (Customer customer : customersInShop) {
+            infoCustomer.add(customer.getDataShop());
+        }
+        return infoCustomer;
+    }
+
+    public boolean isBarberSleeping() {
+        return this.barberSleeping;
+    }
 
 
 
     // Info: IDCustomer, NameCustomer, Priority, TimeShaving.
-    public Object[][] takeInfoCustomer(List<Customer> customer) {
-        Object[][] matrix = new Object[customer.size()][];
-        int c = matrix.length;
-        for (int i = 0; i < c; i++) {
-            matrix[i] = customer.get(i).getData();
+    public ArrayList<Object[]> takeInfoCustomerExit() {
+        ArrayList<Object[]> infoCustomer = new ArrayList<>();
+        for (Customer customer : listCustomerExit) {
+            infoCustomer.add(customer.getData());
         }
-        return matrix;
+        return infoCustomer;
     }
+
 
 }
 

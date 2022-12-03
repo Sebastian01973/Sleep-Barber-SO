@@ -2,10 +2,16 @@ package controllers;
 
 import models.Barber;
 import models.BarberShop;
+import models.Customer;
 import views.Window;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
+
+import static java.lang.Thread.sleep;
 
 public class Presenter implements ActionListener {
 
@@ -15,8 +21,7 @@ public class Presenter implements ActionListener {
     public Presenter() {
         this.window = new Window(this);
         window.setVisibleSplash(true);
-        shop = new BarberShop(4);
-        new Barber("JUAN", 4,shop).start();
+
     }
 
 
@@ -29,7 +34,7 @@ public class Presenter implements ActionListener {
                 window.setVisibleSplash(false);
                 window.setVisible(true);
             }
-            case CLIENT_ATTENTION -> window.setVisibleClientAttention(true);
+            case CLIENT_ATTENTION -> visibleClientAttention();
             case CLIENT_NO_ATTENTION -> window.setVisibleClientNoAttention(true);
             case STADISTICS -> window.setVisibleStatistic(true);
             case CANCEL_DIALOG -> {
@@ -40,13 +45,47 @@ public class Presenter implements ActionListener {
         }
     }
 
-    public void getDatesSimulation(){
+    public void visibleClientAttention() {
+        window.refreshTableAttentionClient(shop.takeInfoCustomerExit());
+        window.setVisibleClientAttention(true);
+    }
+
+    public void getDatesSimulation() {
 
     }
 
-    private void startSimulation() {
+    private int counter = 0;
 
-        //Donde va toda la simulacion
+    private void startSimulation() {
+        String[] data = window.getDatesSimulation();
+        int timeSimulation = Integer.parseInt(data[0]);
+        int numSeats = Integer.parseInt(data[1]);
+        int timeNextCustomer = Integer.parseInt(data[2]);
+        int timeShaving = Integer.parseInt(data[3]);
+
+        shop = new BarberShop(numSeats);
+        window.setMaxChairs(numSeats);
+        new Barber("SOFIA BARBERA", timeShaving, shop).start();
+
+
+        new Thread(() -> {
+            while (true) {
+                try {
+                    // PACHO CREE ESTO EN ALEATORIO
+                    sleep(TimeUnit.SECONDS.toMillis(10));
+                    new Customer(counter, "Customer " + counter, (int) (Math.random() * 3 + 1), shop).start();
+                    counter++;
+
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+
+        Timer timer = new Timer((int) TimeUnit.SECONDS.toMillis(1), e -> {
+            System.out.println("Sleeping barber? " + shop.isBarberSleeping());
+        });
+        timer.start();
     }
 
 }

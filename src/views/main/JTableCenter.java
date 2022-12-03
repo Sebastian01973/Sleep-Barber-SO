@@ -16,13 +16,14 @@ public class JTableCenter extends JPanel {
     private javax.swing.JTable jTable;
     private DefaultTableModel dtmElements;
     private JScrollPane jScrollPane;
-    private String[]  headers;
+    private String[] headers;
 
-    private JModelLabel maxChairs,availableChairs,occupiedChairs;
+    private JModelLabel maxChairs, availableChairs, occupiedChairs;
 
     public JTableCenter(ActionListener actionListener) {
         dtmElements = new DefaultTableModel() {
             private static final long serialVersionUID = 1L;
+
             @Override
             public boolean isCellEditable(int arg0, int arg1) {
                 return false;
@@ -33,35 +34,36 @@ public class JTableCenter extends JPanel {
         initComponents(actionListener);
     }
 
-    public void initHeaderTable(){
+    public void initHeaderTable() {
         JPanel headerTable = new JPanel();
         headerTable.setLayout(new FlowLayout(FlowLayout.CENTER));
         headerTable.setBackground(Constant.COLOR_WHITE);
-        headerTable.setBorder(BorderFactory.createEmptyBorder(2,0,6,0));
+        headerTable.setBorder(BorderFactory.createEmptyBorder(2, 0, 6, 0));
 
-        maxChairs = new JModelLabel("Maximo Sillas: 1",Constant.FONT_ARIAL_ROUNDER_17,Constant.COLOR_WHITE,Constant.COLOR_BLACK);
+        maxChairs = new JModelLabel("Maximo Sillas: 1", Constant.FONT_ARIAL_ROUNDER_17, Constant.COLOR_WHITE, Constant.COLOR_BLACK);
         maxChairs.setColorPaint(Constant.COLOR_WHITE);
-        maxChairs.setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
+        maxChairs.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
         headerTable.add(maxChairs);
 
         headerTable.add(Box.createRigidArea(new Dimension(20, 0)));
 
-        occupiedChairs = new JModelLabel("Sillas Ocupadas: 1",Constant.FONT_ARIAL_ROUNDER_17,Constant.COLOR_WHITE,Constant.COLOR_BLACK);
+        occupiedChairs = new JModelLabel("Sillas Ocupadas: 1", Constant.FONT_ARIAL_ROUNDER_17, Constant.COLOR_WHITE, Constant.COLOR_BLACK);
         occupiedChairs.setColorPaint(Constant.COLOR_WHITE);
-        occupiedChairs.setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
+        occupiedChairs.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
         headerTable.add(occupiedChairs);
 
         headerTable.add(Box.createRigidArea(new Dimension(20, 0)));
 
-        availableChairs = new JModelLabel("Sillas Disponibles: 1",Constant.FONT_ARIAL_ROUNDER_17,Constant.COLOR_WHITE,Constant.COLOR_BLACK);
+        availableChairs = new JModelLabel("Sillas Disponibles: 1", Constant.FONT_ARIAL_ROUNDER_17, Constant.COLOR_WHITE, Constant.COLOR_BLACK);
         availableChairs.setColorPaint(Constant.COLOR_WHITE);
-        availableChairs.setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
+        availableChairs.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
         headerTable.add(availableChairs);
 
-        this.add(headerTable,BorderLayout.NORTH);
+        this.add(headerTable, BorderLayout.NORTH);
 
     }
-    private void initComponents(ActionListener actionListener){
+
+    private void initComponents(ActionListener actionListener) {
         initHeaderTable();
         jTable = new javax.swing.JTable();
         jTable.setModel(dtmElements);
@@ -75,7 +77,7 @@ public class JTableCenter extends JPanel {
         jTable.setFont(Constant.FONT_ARIAL_ROUNDER_15);
         jTable.setBackground(Color.WHITE);
         jTable.setFillsViewportHeight(false);
-        jTable.setRowHeight( 35 );
+        jTable.setRowHeight(35);
         jTable.setBorder(null);
         jTable.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         jScrollPane = new JScrollPane(jTable);
@@ -86,7 +88,7 @@ public class JTableCenter extends JPanel {
         this.setBorder(null);
     }
 
-    public void addRowTable(Object[] vector){
+    public void addRowTable(Object[] vector) {
         dtmElements.addRow(vector);
     }
 
@@ -102,26 +104,26 @@ public class JTableCenter extends JPanel {
         }
     }
 
-    public void addElementToTable(ArrayList<Object[]> matrix){
+    public void addElementToTable(ArrayList<Object[]> matrix) {
         cleanRowsTable();
         dtmElements.setColumnIdentifiers(Constant.H_PRODUCTS);
         this.centerText();
 //        UtilitiesViews.getModelColumn(jtElements, 0, 75, 75, 75);
 //        UtilitiesViews.getModelColumn(jtElements, 2, 55, 55, 55);
         for (Object[] objects : matrix) {
-            addElementToTable(objects,true);
+            addElementToTable(objects, true);
         }
     }
 
-    public void addElementToTable(Object[] vector,boolean status){
-        if (status){
+    public void addElementToTable(Object[] vector, boolean status) {
+        if (status) {
             dtmElements.addRow(vector);
-        }else{
+        } else {
             dtmElements.addRow(vector);
         }
     }
 
-    public void addRowsToTable(ArrayList<Object[]> matrix, String[] newHeaders){
+    public void addRowsToTable(ArrayList<Object[]> matrix, String[] newHeaders) {
         cleanRowsTable();
         this.headers = newHeaders;
         dtmElements.setColumnIdentifiers(headers);
@@ -131,13 +133,24 @@ public class JTableCenter extends JPanel {
         }
     }
 
-    public int getColumnCountTable(){
+    public int getColumnCountTable() {
         return jTable.getColumnCount();
     }
 
-    public String getSelectedRow(Point point ){
+    public String getSelectedRow(Point point) {
         int selectedRow = jTable.rowAtPoint(point);
-        return String.valueOf(jTable.getValueAt(selectedRow,0));
+        return String.valueOf(jTable.getValueAt(selectedRow, 0));
     }
 
+    public void setMaxChairs(int maxChairs) {
+        this.maxChairs.setText("Maximo Sillas: " + maxChairs);
+    }
+
+    public void setAvailable(int availableChairs) {
+        this.availableChairs.setText("Sillas Ocupadas: " + maxChairs);
+    }
+
+    public void setOccupiedChairs(int noAvailableChairs) {
+        this.occupiedChairs.setText("Sillas disponibles: " + maxChairs);
+    }
 }

@@ -87,5 +87,13 @@ public class Window extends JFrame {
         clientNoAttention.refreshTableAttentionNoClient(matrix);
     }
 
+    public void setMaxChairs(int maxChairs) {
+        mainPanel.setMaxChairs(maxChairs);
+    }
+
+    public void refreshTableCenter(ArrayList<Object[]> matrix){
+        mainPanel.addElementToTable(matrix);
+    }
+
 }
 

@@ -102,4 +102,8 @@ public class Customer extends Thread implements Comparable<Customer> {
     public Object[] getData() {
         return (new Object[]{this.getIdCustomer(), this.getNameCustomer(), this.getPriorityCustomer(), this.getTimeShaving()});
     }
+
+    public Object[] getDataShop(){
+        return (new Object[]{this.getIdCustomer(), this.getNameCustomer(), this.getPriorityCustomer()});
+    }
 }
