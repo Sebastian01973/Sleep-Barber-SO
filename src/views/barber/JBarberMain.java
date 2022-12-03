@@ -30,11 +30,11 @@ public class JBarberMain extends JPanel {
         titleBarber.setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
         this.add(titleBarber);
 
-        add(Box.createRigidArea(new Dimension(0,20)));
+        this.add(Box.createRigidArea(new Dimension(0,20)));
 
 
         stateBarber = new JModelLabel(Constant.IMG_SLEEP_BARBER);
-        stateBarber.setBorder(null);
+        stateBarber.setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
         this.add(stateBarber);
 
         this.add(Box.createRigidArea(new Dimension(0,20)));
@@ -46,16 +46,16 @@ public class JBarberMain extends JPanel {
 
         this.add(Box.createRigidArea(new Dimension(0,20)));
 
-        timeAttention = new JLabel("Time Restante: 5");
+        timeAttention = new JLabel("Tiempo Restante: 5");
         timeAttention.setFont(Constant.FONT_ARIAL_ROUNDER_20);
         timeAttention.setBackground(Constant.COLOR_WHITE);
         timeAttention.setForeground(Constant.COLOR_BLACK);
         timeAttention.setForeground(Constant.COLOR_BLACK);
+        timeAttention.setAlignmentX(LEFT_ALIGNMENT);
         this.add(timeAttention);
 
         this.add(Box.createRigidArea(new Dimension(0,20)));
     }
-
 
     public void setIconBarber(String path){
         ImageIcon image;
@@ -65,7 +65,7 @@ public class JBarberMain extends JPanel {
     }
 
     public void setTimeAttentionBarber(int time){
-        timeAttention.setText("Time Restante: "+ time);
+        timeAttention.setText("Tiempo Restante: "+ time);
     }
 
     public void setStateBarberLa1bel(String text){

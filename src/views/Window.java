@@ -15,8 +15,9 @@ public class Window extends JFrame {
         this.setIconImage( new ImageIcon(getClass().getResource( Constant.IMG_LOGO)).getImage());
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setTitle( Constant.TITLE_STORE);
-        this.setExtendedState(MAXIMIZED_BOTH);
-        this.setMinimumSize(Constant.SCREEN_SIZE);
+//        this.setExtendedState(MAXIMIZED_BOTH);
+        this.setSize(new Dimension((int) (Constant.SCREEN_SIZE.getWidth()*0.6),(int) (Constant.SCREEN_SIZE.getHeight()*0.6)));
+        this.setMinimumSize(new Dimension((int) (Constant.SCREEN_SIZE.getWidth()*0.6),(int) (Constant.SCREEN_SIZE.getHeight()*0.6)));
         initComponents(listener);
         this.setVisible(false);
     }
@@ -37,6 +38,18 @@ public class Window extends JFrame {
 
     public String[] getDatesSimulation(){
         return jDialogSplash.getDatesSimulation();
+    }
+
+    public void setIconBarber(String path){
+        mainPanel.setIconBarber(path);
+    }
+
+    public void setTimeAttentionBarber(int time){
+        mainPanel.setTimeAttentionBarber(time);
+    }
+
+    public void setStateBarberLa1bel(String text){
+        mainPanel.setStateBarberLa1bel(text);
     }
 
 }

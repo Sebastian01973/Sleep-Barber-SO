@@ -64,12 +64,10 @@ public class JHeaderMain extends JPanel {
         stadistic.addActionListener(actionListener);
         center.add(stadistic);
 
-
         this.add(center,BorderLayout.CENTER);
-
     }
 
     public void setTimeSimulation(int time){
-        jLClient.setText("Time Simulation: "+time);
+        jLClient.setText("Time Simulation: "+ time);
     }
 }

@@ -39,6 +39,17 @@ public class MainPanel extends JPanel {
     }
 
 
+    public void setIconBarber(String path){
+        jBarberMain.setIconBarber(path);
+    }
+
+    public void setTimeAttentionBarber(int time){
+       jBarberMain.setTimeAttentionBarber(time);
+    }
+
+    public void setStateBarberLa1bel(String text){
+        jBarberMain.setStateBarberLa1bel(text);
+    }
 
 
 }

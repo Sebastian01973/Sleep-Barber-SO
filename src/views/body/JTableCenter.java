@@ -1,6 +1,7 @@
 package views.body;
 
 import views.Constant;
+import views.models.JModelLabel;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -17,6 +18,8 @@ public class JTableCenter extends JPanel {
     private JScrollPane jScrollPane;
     private String[]  headers;
 
+    private JModelLabel maxChairs,availableChairs,occupiedChairs;
+
     public JTableCenter(ActionListener actionListener) {
         dtmElements = new DefaultTableModel() {
             private static final long serialVersionUID = 1L;
@@ -29,8 +32,18 @@ public class JTableCenter extends JPanel {
         this.setLayout(new BorderLayout());
         initComponents(actionListener);
     }
+
+    public void initHeaderTable(){
+        JPanel headerTable = new JPanel();
+        headerTable.setLayout(new FlowLayout(FlowLayout.CENTER));
+        headerTable.setBackground(Constant.COLOR_BLUE_DARK_2);
+        headerTable.setBorder(BorderFactory.createEmptyBorder(2,0,6,0));
+
+
+
+    }
     private void initComponents(ActionListener actionListener){
-        jTable = new javax.swing.JTable();
+        initHeaderTable();
         jTable = new javax.swing.JTable();
         jTable.setModel(dtmElements);
         jTable.setIntercellSpacing(new Dimension(0, 0));
