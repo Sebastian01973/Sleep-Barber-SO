@@ -91,13 +91,13 @@ public class Presenter implements ActionListener {
             }
         }).start();
 
-        Timer timer = new Timer((500), e -> {
+        Timer timer = new Timer((1000), e -> {
             window.refreshTableCenter(shop.takeInfoCustomerShop());
             if(!shop.isBarberSleeping()) window.setStateBarber(Constant.IMG_HAIRCUT);
             else window.setStateBarber(Constant.IMG_SLEEP_BARBER);
         });
         timer.start();
-        Timer timer2 = new Timer((1000), e -> {
+        Timer timer2 = new Timer((500), e -> {
            window.setTimeAttentionBarber(shop.getTimeShaving());
            window.setAvailable(shop.getSeatsAvailable());
            window.setOccupiedChairs(shop.getOccupiedSeats());

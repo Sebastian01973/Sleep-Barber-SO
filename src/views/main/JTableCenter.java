@@ -148,10 +148,10 @@ public class JTableCenter extends JPanel {
     }
 
     public void setAvailable(int availableChairs) {
-        this.availableChairs.setText("Sillas Ocupadas: " + maxChairs);
+        this.availableChairs.setText("Sillas Disponibles: " + availableChairs);
     }
 
     public void setOccupiedChairs(int noAvailableChairs) {
-        this.occupiedChairs.setText("Sillas disponibles: " + maxChairs);
+        this.occupiedChairs.setText("Sillas Ocupadas: " + noAvailableChairs);
     }
 }
