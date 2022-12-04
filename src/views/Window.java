@@ -1,5 +1,6 @@
 package views;
 
+import models.Customer;
 import views.splash.JDialogSplash;
 import views.statistic.ClientAttention;
 import views.statistic.ClientNoAttention;
@@ -94,6 +95,12 @@ public class Window extends JFrame {
     public void refreshTableCenter(ArrayList<Object[]> matrix){
         mainPanel.addElementToTable(matrix);
     }
+    public void setStateBarber(){
+        mainPanel.setStateBarber();
+    }
+    public void setTimeAttention(String timeAtt){
+        mainPanel.setTimeAttention(timeAtt);
+    }
 
-}
+    }
 

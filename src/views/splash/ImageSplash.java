@@ -2,6 +2,7 @@ package views.splash;
 
 import controllers.Command;
 import views.Constant;
+import views.models.JModelLabel;
 import views.models.RoundedJButton;
 
 import javax.swing.*;
@@ -19,8 +20,7 @@ public class ImageSplash extends JPanel {
         exitButton.setBounds(20,430,80,25);
         add(exitButton);
     }
-
-    @Override
+   @Override
     public void paint(Graphics g) {
         setOpaque(false);
         Graphics2D g2 = (Graphics2D) g;

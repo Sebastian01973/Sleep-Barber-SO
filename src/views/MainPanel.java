@@ -1,5 +1,6 @@
 package views;
 
+import models.Customer;
 import views.main.JBarberMain;
 import views.main.JTableCenter;
 import views.main.JDoorMain;
@@ -59,5 +60,12 @@ public class MainPanel extends JPanel {
 
     public void addElementToTable(ArrayList<Object[]> matrix) {
         jTableCenter.addElementToTable(matrix);
+    }
+
+    public void setStateBarber(){
+        jBarberMain.setStateBarber();
+    }
+    public void setTimeAttention(String timeAtt){
+        jDoorMain.setTimeAttention(timeAtt);
     }
 }

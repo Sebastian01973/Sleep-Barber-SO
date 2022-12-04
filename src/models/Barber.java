@@ -14,6 +14,7 @@ public class Barber extends Thread {
      */
     private final int timeMaxShaving;
     private String name;
+    private long timeShaving;
 
     public Barber(String name,int timeMaxShaving ,BarberShop shop) {
         super(name);
@@ -27,6 +28,7 @@ public class Barber extends Thread {
         while(true) {
             Customer customer = shop.getNextCustomer();
             shavingCustomer(customer);
+
             shop.finishHaircut(customer);
         }
     }
@@ -36,7 +38,7 @@ public class Barber extends Thread {
      */
     private void shavingCustomer(Customer customer) {
         try {
-            long timeShaving = (long) (Math.random() * (timeMaxShaving) + 3);
+            timeShaving = (long) (Math.random() * (timeMaxShaving) + 1);
             sleep(TimeUnit.SECONDS.toMillis(timeShaving));
             customer.setTimeShaving((int) timeShaving);
             System.out.println("CUSTOMER: " + this.getNameBarber() + "     Shaving time: " + timeShaving + "  for customer: " + customer.getIdCustomer());
@@ -44,7 +46,6 @@ public class Barber extends Thread {
             throw new RuntimeException(e);
         }
     }
-
     public String getNameBarber() {
         return this.name;
     }

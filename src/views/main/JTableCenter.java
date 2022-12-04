@@ -1,5 +1,6 @@
 package views.main;
 
+import models.Customer;
 import views.Constant;
 import views.models.JModelLabel;
 

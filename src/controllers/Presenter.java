@@ -66,14 +66,15 @@ public class Presenter implements ActionListener {
         shop = new BarberShop(numSeats);
         window.setMaxChairs(numSeats);
         new Barber("SOFIA BARBERA", timeShaving, shop).start();
-
-
         new Thread(() -> {
             while (true) {
                 try {
                     // PACHO CREE ESTO EN ALEATORIO
-                    sleep(TimeUnit.SECONDS.toMillis(10));
-                    new Customer(counter, "Customer " + counter, (int) (Math.random() * 3 + 1), shop).start();
+                    sleep(TimeUnit.SECONDS.toMillis(timeNextCustomer));
+                    Customer customer = new Customer(counter, "Customer " + counter, (int) (Math.random() * 3 + 1),shop);
+                    customer.start();
+                    window.setTimeAttention(String.valueOf(customer.getTimeShaving()));
+
                     counter++;
 
                 } catch (InterruptedException e) {
@@ -83,9 +84,17 @@ public class Presenter implements ActionListener {
         }).start();
 
         Timer timer = new Timer((int) TimeUnit.SECONDS.toMillis(1), e -> {
-            System.out.println("Sleeping barber? " + shop.isBarberSleeping());
+            window.refreshTableCenter(shop.takeInfoCustomerShop());
+            if (!shop.isBarberSleeping()){
+                window.setStateBarber();
+            }else {
+
+            }
         });
+
         timer.start();
+
     }
+
 
 }

@@ -31,6 +31,7 @@ public class BarberShop {
     private int occupiedSeats;
     private boolean done = false;
     private boolean barberSleeping ;
+    private int timeShaving;
 
     /**
      * @param numSeats Number of chairs the store has.
@@ -107,6 +108,7 @@ public class BarberShop {
             return true;
         }
         customersInShop.add(customer);
+        System.out.println("size "+customersInShop.size());
         this.numSeatsAvailable = numSeats - customersInShop.size();
         this.occupiedSeats = customersInShop.size();
         return false;
@@ -148,7 +150,11 @@ public class BarberShop {
         barberSleeping = false;
         Customer customer = customersInShop.poll();
         listCustomerExit.add(customer);
+        timeShaving = customer.getTimeShaving();
         return customer;
+    }
+    public int getTimeShaving(){
+        return timeShaving;
     }
 
     /**
@@ -166,6 +172,14 @@ public class BarberShop {
 
     public ArrayList<Customer> getListCustomers() {
         return listCustomers;
+    }
+
+    public ArrayList<Object[]> getListObject(ArrayList<Customer> list){
+        ArrayList<Object[]> result = new ArrayList<>();
+        for ( Customer customer:list  ) {
+            result.add(new Object[]{customer.getId(),customer.getName(),customer.getPriority()});
+        }
+        return result;
     }
 
 

@@ -51,4 +51,8 @@ public class JDoorMain extends JPanel {
         this.add(Box.createRigidArea(new Dimension(0,20)));
 
     }
+    public void setTimeAttention(String timeAtt){
+        timeAttention.setText("Tiempo de corte: " + timeAtt);
+    }
+
 }

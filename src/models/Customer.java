@@ -97,6 +97,7 @@ public class Customer extends Thread implements Comparable<Customer> {
 
     public void setTimeShaving(int timeShaving) {
         this.timeShaving = timeShaving;
+        System.out.println("Time "+timeShaving);
     }
 
     public Object[] getData() {
