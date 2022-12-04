@@ -62,10 +62,22 @@ public class MainPanel extends JPanel {
         jTableCenter.addElementToTable(matrix);
     }
 
-    public void setStateBarber(){
-        jBarberMain.setStateBarber();
+    public void setStateBarber(String routeImg){
+        jBarberMain.setStateBarber(routeImg);
     }
-    public void setTimeAttention(String timeAtt){
-        jDoorMain.setTimeAttention(timeAtt);
+    public void setPriorityCustomer(int timeAtt){
+        jDoorMain.setPriorityCustomer(timeAtt);
+    }
+    public void setIdCustomer(int idCustomer){
+        jDoorMain.setIdCustomer(idCustomer);
+    }
+    public void setAvailable(int availableChairs) {
+        jTableCenter.setAvailable(availableChairs);
+    }
+    public void shopState(String routeImg){
+        jDoorMain.shopState(routeImg);
+    }
+    public void setOccupiedChairs(int noAvailableChairs){
+        jTableCenter.setOccupiedChairs(noAvailableChairs);
     }
 }

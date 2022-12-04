@@ -95,12 +95,23 @@ public class Window extends JFrame {
     public void refreshTableCenter(ArrayList<Object[]> matrix){
         mainPanel.addElementToTable(matrix);
     }
-    public void setStateBarber(){
-        mainPanel.setStateBarber();
+    public void setStateBarber(String routeImg){
+        mainPanel.setStateBarber(routeImg);
     }
-    public void setTimeAttention(String timeAtt){
-        mainPanel.setTimeAttention(timeAtt);
+    public void setPriorityCustomer(int timeAtt){
+        mainPanel.setPriorityCustomer(timeAtt);
     }
-
+    public void setIdCustomer(int idCustomer){
+        mainPanel.setIdCustomer(idCustomer);
+    }
+    public void setAvailable(int availableChairs) {
+        mainPanel.setAvailable(availableChairs);
+    }
+    public void shopState(String routeImg){
+        mainPanel.shopState(routeImg);
+    }
+    public void setOccupiedChairs(int noAvailableChairs){
+        mainPanel.setOccupiedChairs(noAvailableChairs);
+    }
     }
 

@@ -108,12 +108,14 @@ public class BarberShop {
             return true;
         }
         customersInShop.add(customer);
-        System.out.println("size "+customersInShop.size());
+        timeShaving=customer.getTimeShaving();
         this.numSeatsAvailable = numSeats - customersInShop.size();
         this.occupiedSeats = customersInShop.size();
         return false;
     }
-
+    public int getTimeShaving(){
+        return timeShaving;
+    }
     /**
      * @param customer Customer who finished the cut in the store.
      * @desciption The method is for the customer output, so its status as a customer changes to true which means that their haircut was done correctly. Customer who finished the cut in the store.
@@ -150,11 +152,7 @@ public class BarberShop {
         barberSleeping = false;
         Customer customer = customersInShop.poll();
         listCustomerExit.add(customer);
-        timeShaving = customer.getTimeShaving();
         return customer;
-    }
-    public int getTimeShaving(){
-        return timeShaving;
     }
 
     /**
@@ -162,6 +160,9 @@ public class BarberShop {
      */
     private boolean isSeatsEmpty() {
         return customersInShop.size() == 0;
+    }
+    public boolean isShopFull(){
+        return customersInShop.size()==numSeats;
     }
 
     public synchronized ArrayList<Customer> getListCustomersExit() {
@@ -172,14 +173,6 @@ public class BarberShop {
 
     public ArrayList<Customer> getListCustomers() {
         return listCustomers;
-    }
-
-    public ArrayList<Object[]> getListObject(ArrayList<Customer> list){
-        ArrayList<Object[]> result = new ArrayList<>();
-        for ( Customer customer:list  ) {
-            result.add(new Object[]{customer.getId(),customer.getName(),customer.getPriority()});
-        }
-        return result;
     }
 
 
@@ -208,4 +201,3 @@ public class BarberShop {
 
 
 }
-
