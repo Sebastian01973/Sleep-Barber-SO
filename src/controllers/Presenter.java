@@ -72,18 +72,18 @@ public class Presenter implements ActionListener {
             while (true) {
                 try {
                     // PACHO CREE ESTO EN ALEATORIO
-                    sleep(TimeUnit.SECONDS.toMillis(10));
+                    sleep(TimeUnit.SECONDS.toMillis(timeNextCustomer));
                     new Customer(counter, "Customer " + counter, (int) (Math.random() * 3 + 1), shop).start();
                     counter++;
-
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+
             }
         }).start();
 
-        Timer timer = new Timer((int) TimeUnit.SECONDS.toMillis(1), e -> {
-            System.out.println("Sleeping barber? " + shop.isBarberSleeping());
+        Timer timer = new Timer((500), e -> {
+            window.refreshTableCenter(shop.takeInfoCustomerShop());
         });
         timer.start();
     }
