@@ -1,5 +1,6 @@
 package views;
 
+import models.Customer;
 import views.main.JBarberMain;
 import views.main.JTableCenter;
 import views.main.JDoorMain;
@@ -59,5 +60,24 @@ public class MainPanel extends JPanel {
 
     public void addElementToTable(ArrayList<Object[]> matrix) {
         jTableCenter.addElementToTable(matrix);
+    }
+
+    public void setStateBarber(String routeImg){
+        jBarberMain.setStateBarber(routeImg);
+    }
+    public void setPriorityCustomer(int timeAtt){
+        jDoorMain.setPriorityCustomer(timeAtt);
+    }
+    public void setIdCustomer(int idCustomer){
+        jDoorMain.setIdCustomer(idCustomer);
+    }
+    public void setAvailable(int availableChairs) {
+        jTableCenter.setAvailable(availableChairs);
+    }
+    public void shopState(String routeImg){
+        jDoorMain.shopState(routeImg);
+    }
+    public void setOccupiedChairs(int noAvailableChairs){
+        jTableCenter.setOccupiedChairs(noAvailableChairs);
     }
 }

@@ -3,13 +3,14 @@ package controllers;
 import models.Barber;
 import models.BarberShop;
 import models.Customer;
+import views.Constant;
 import views.Window;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import static java.lang.Thread.sleep;
 
@@ -66,14 +67,21 @@ public class Presenter implements ActionListener {
         shop = new BarberShop(numSeats);
         window.setMaxChairs(numSeats);
         new Barber("SOFIA BARBERA", timeShaving, shop).start();
-
-
         new Thread(() -> {
             while (true) {
                 try {
                     // PACHO CREE ESTO EN ALEATORIO
                     sleep(TimeUnit.SECONDS.toMillis(timeNextCustomer));
-                    new Customer(counter, "Customer " + counter, (int) (Math.random() * 3 + 1), shop).start();
+                    Customer customer = new Customer(counter, "Customer " + counter, (int) (Math.random() * 3 + 1),shop);
+                    customer.start();
+                    window.setPriorityCustomer(customer.getPriorityCustomer());
+                    window.setIdCustomer(customer.getIdCustomer());
+                    if (shop.isShopFull()) {
+                        window.shopState(Constant.IMG_CLIENT_NO_SPACE);
+                        sleep(500);
+                        window.shopState(Constant.IMG_CLIENT_LEAVING);
+                    }
+                    else window.shopState(Constant.IMG_CLIENT_ENTERING);
                     counter++;
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -82,10 +90,19 @@ public class Presenter implements ActionListener {
             }
         }).start();
 
-        Timer timer = new Timer((500), e -> {
+        Timer timer = new Timer((1000), e -> {
             window.refreshTableCenter(shop.takeInfoCustomerShop());
+            if(!shop.isBarberSleeping()) window.setStateBarber(Constant.IMG_HAIRCUT);
+            else window.setStateBarber(Constant.IMG_SLEEP_BARBER);
         });
         timer.start();
+        Timer timer2 = new Timer((500), e -> {
+           window.setTimeAttentionBarber(shop.getTimeShaving());
+           window.setAvailable(shop.getSeatsAvailable());
+           window.setOccupiedChairs(shop.getOccupiedSeats());
+        });
+        timer2.start();
     }
+
 
 }

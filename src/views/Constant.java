@@ -10,9 +10,9 @@ public class Constant {
     //Images
     public static final String IMG_LOGO = "/logo.png";
     public static final String IMG_SLEEP_BARBER = "/sleep.gif";
-    public static final String IMG_HAIRCUT = "/cut.gif";
+    public static final String IMG_HAIRCUT = "/barberWorking.jpeg";
 
-    public static final String IMG_CLIENT_LEAVING = "/leaving.png";
+    public static final String IMG_CLIENT_LEAVING = "/leaving.jpeg";
     public static final String IMG_CLIENT_ENTERING = "/entering.png";
     public static final String IMG_CLIENT_NO_SPACE = "/nospace.png";
 

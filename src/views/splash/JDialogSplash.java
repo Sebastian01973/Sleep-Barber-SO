@@ -33,7 +33,6 @@ public class JDialogSplash extends JDialog {
 
         this.add(jContainerPanel);
     }
-
     public String[] getDatesSimulation(){
         return jMainSplash.getDatesSimulation();
     }

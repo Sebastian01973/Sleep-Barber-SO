@@ -71,4 +71,7 @@ public class JBarberMain extends JPanel {
     public void setStateBarberLa1bel(String text){
         stateBarber.setText(text);
     }
+    public void setStateBarber(String routeImg){
+        stateBarber.setIconRelative(routeImg);
+    }
 }

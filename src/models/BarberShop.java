@@ -31,6 +31,7 @@ public class BarberShop {
     private int occupiedSeats;
     private boolean done = false;
     private boolean barberSleeping ;
+    private int timeShaving;
 
     /**
      * @param numSeats Number of chairs the store has.
@@ -107,11 +108,14 @@ public class BarberShop {
             return true;
         }
         customersInShop.add(customer);
+        timeShaving=customer.getTimeShaving();
         this.numSeatsAvailable = numSeats - customersInShop.size();
         this.occupiedSeats = customersInShop.size();
         return false;
     }
-
+    public int getTimeShaving(){
+        return timeShaving;
+    }
     /**
      * @param customer Customer who finished the cut in the store.
      * @desciption The method is for the customer output, so its status as a customer changes to true which means that their haircut was done correctly. Customer who finished the cut in the store.
@@ -157,6 +161,9 @@ public class BarberShop {
     private boolean isSeatsEmpty() {
         return customersInShop.size() == 0;
     }
+    public boolean isShopFull(){
+        return customersInShop.size()==numSeats;
+    }
 
     public synchronized ArrayList<Customer> getListCustomersExit() {
         notifyAll();
@@ -194,4 +201,3 @@ public class BarberShop {
 
 
 }
-
