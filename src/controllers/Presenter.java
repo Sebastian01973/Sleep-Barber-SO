@@ -37,7 +37,7 @@ public class Presenter implements ActionListener {
             }
             case CLIENT_ATTENTION -> visibleClientAttention();
             case CLIENT_NO_ATTENTION -> visibleClientNoAttention();
-            case STADISTICS -> window.setVisibleStatistic(true);
+            case STADISTICS -> visiblePieGraph();
             case CANCEL_DIALOG -> {
                 window.setVisibleClientAttention(false);
                 window.setVisibleClientNoAttention(false);
@@ -54,8 +54,9 @@ public class Presenter implements ActionListener {
         window.refreshTableAttentionNoClient(shop.takeInfoCustomerNoAttended());
         window.setVisibleClientNoAttention(true);
     }
-    public void getDatesSimulation() {
-
+    public void visiblePieGraph() {
+        window.paintPie(shop.sizeList(shop.takeInfoCustomerExit()),shop.sizeList(shop.takeInfoCustomerNoAttended()));
+        window.setVisibleStatistic(true);
     }
 
     private int counter = 0;
@@ -104,6 +105,7 @@ public class Presenter implements ActionListener {
             else {
                 window.setTimeAttentionBarber(0);
                 window.setStateBarber(Constant.IMG_SLEEP_BARBER);
+                window.shopState(Constant.IMG_DOOR);
             }
         });
         timer.start();

@@ -1,6 +1,7 @@
 package views;
 
 import models.Customer;
+import views.models.LabelPieChart;
 import views.splash.JDialogSplash;
 import views.statistic.ClientAttention;
 import views.statistic.ClientNoAttention;
@@ -112,6 +113,9 @@ public class Window extends JFrame {
     }
     public void setOccupiedChairs(int noAvailableChairs){
         mainPanel.setOccupiedChairs(noAvailableChairs);
+    }
+    public void paintPie(int v1, int v2){
+        jDialogStatistic.paintPie(v1,v2);
     }
     }
 
