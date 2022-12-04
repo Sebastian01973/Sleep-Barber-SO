@@ -9,6 +9,7 @@ import views.Window;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Time;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -18,14 +19,13 @@ public class Presenter implements ActionListener {
 
     private Window window;
     private BarberShop shop;
+    AtomicInteger timeShavingAt = new AtomicInteger();
 
     public Presenter() {
         this.window = new Window(this);
         window.setVisibleSplash(true);
 
     }
-
-
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (Command.valueOf(e.getActionCommand())) {
@@ -36,7 +36,7 @@ public class Presenter implements ActionListener {
                 window.setVisible(true);
             }
             case CLIENT_ATTENTION -> visibleClientAttention();
-            case CLIENT_NO_ATTENTION -> window.setVisibleClientNoAttention(true);
+            case CLIENT_NO_ATTENTION -> visibleClientNoAttention();
             case STADISTICS -> window.setVisibleStatistic(true);
             case CANCEL_DIALOG -> {
                 window.setVisibleClientAttention(false);
@@ -50,7 +50,10 @@ public class Presenter implements ActionListener {
         window.refreshTableAttentionClient(shop.takeInfoCustomerExit());
         window.setVisibleClientAttention(true);
     }
-
+    public void visibleClientNoAttention() {
+        window.refreshTableAttentionNoClient(shop.takeInfoCustomerNoAttended());
+        window.setVisibleClientNoAttention(true);
+    }
     public void getDatesSimulation() {
 
     }
@@ -66,7 +69,8 @@ public class Presenter implements ActionListener {
 
         shop = new BarberShop(numSeats);
         window.setMaxChairs(numSeats);
-        new Barber("SOFIA BARBERA", timeShaving, shop).start();
+        Barber barber = new Barber("SOFIA BARBERA", timeShaving, shop);
+        barber.start();
         new Thread(() -> {
             while (true) {
                 try {
@@ -82,7 +86,7 @@ public class Presenter implements ActionListener {
                         window.shopState(Constant.IMG_CLIENT_LEAVING);
                     }
                     else window.shopState(Constant.IMG_CLIENT_ENTERING);
-
+                    timeShavingAt.set(barber.getTimeShaving());
                     counter++;
 
                 } catch (InterruptedException e) {
@@ -91,16 +95,22 @@ public class Presenter implements ActionListener {
             }
         }).start();
 
-        Timer timer = new Timer((1000), e -> {
-            window.refreshTableCenter(shop.takeInfoCustomerShop());
-            if(!shop.isBarberSleeping()) window.setStateBarber(Constant.IMG_HAIRCUT);
-            else window.setStateBarber(Constant.IMG_SLEEP_BARBER);
+        Timer timer = new Timer((500), e -> {
+            if(!shop.isBarberSleeping()) {
+                if (timeShavingAt.get()>0) window.setTimeAttentionBarber(timeShavingAt.getAndDecrement());
+                else window.setTimeAttentionBarber(0);
+                window.setStateBarber(Constant.IMG_HAIRCUT);
+            }
+            else {
+                window.setTimeAttentionBarber(0);
+                window.setStateBarber(Constant.IMG_SLEEP_BARBER);
+            }
         });
         timer.start();
-        Timer timer2 = new Timer((500), e -> {
-           window.setTimeAttentionBarber(shop.getTimeShaving());
+        Timer timer2 = new Timer((200), e -> {
            window.setAvailable(shop.getSeatsAvailable());
            window.setOccupiedChairs(shop.getOccupiedSeats());
+           window.refreshTableCenter(shop.takeInfoCustomerShop());
         });
         timer2.start();
     }

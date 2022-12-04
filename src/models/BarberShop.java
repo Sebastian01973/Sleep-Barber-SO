@@ -113,6 +113,11 @@ public class BarberShop {
         this.occupiedSeats = customersInShop.size();
         return false;
     }
+
+    /**
+     *
+     * @return Time shaving
+     */
     public int getTimeShaving(){
         return timeShaving;
     }
@@ -194,10 +199,18 @@ public class BarberShop {
     public ArrayList<Object[]> takeInfoCustomerExit() {
         ArrayList<Object[]> infoCustomer = new ArrayList<>();
         for (Customer customer : listCustomerExit) {
-            infoCustomer.add(customer.getData());
+            if (customer.getStateCustomer()) infoCustomer.add(customer.getData());
         }
         return infoCustomer;
     }
-
+    public ArrayList<Object[]> takeInfoCustomerNoAttended() {
+        ArrayList<Object[]> infoCustomer = new ArrayList<>();
+        for (Customer customer : listCustomerExit) {
+            if (!customer.getStateCustomer()) {
+                infoCustomer.add(customer.getData());
+            }
+        }
+        return infoCustomer;
+    }
 
 }
