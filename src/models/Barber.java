@@ -16,6 +16,12 @@ public class Barber extends Thread {
     private String name;
     private long timeShaving;
 
+    /**
+     * Constructor of Barber
+     * @param name Barber name
+     * @param timeMaxShaving Maximum shaving time
+     * @param shop Barber shop
+     */
     public Barber(String name,int timeMaxShaving ,BarberShop shop) {
         super(name);
         this.shop = shop;
@@ -28,7 +34,6 @@ public class Barber extends Thread {
         while(true) {
             Customer customer = shop.getNextCustomer();
             shavingCustomer(customer);
-
             shop.finishHaircut(customer);
         }
     }
@@ -46,6 +51,13 @@ public class Barber extends Thread {
             throw new RuntimeException(e);
         }
     }
+    public int getTimeShaving(){
+        return (int) timeShaving;
+    }
+    /**
+     * Gets the barber name
+     * @return String the barber name
+     */
     public String getNameBarber() {
         return this.name;
     }

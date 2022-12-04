@@ -46,7 +46,7 @@ public class JBarberMain extends JPanel {
 
         this.add(Box.createRigidArea(new Dimension(0,20)));
 
-        timeAttention = new JLabel("Tiempo Restante: 5");
+        timeAttention = new JLabel("Tiempo corte:");
         timeAttention.setFont(Constant.FONT_ARIAL_ROUNDER_20);
         timeAttention.setBackground(Constant.COLOR_WHITE);
         timeAttention.setForeground(Constant.COLOR_BLACK);
@@ -65,7 +65,7 @@ public class JBarberMain extends JPanel {
     }
 
     public void setTimeAttentionBarber(int time){
-        timeAttention.setText("Tiempo Restante: "+ time);
+        timeAttention.setText("Tiempo corte: "+ time);
     }
 
     public void setStateBarberLa1bel(String text){
@@ -73,5 +73,7 @@ public class JBarberMain extends JPanel {
     }
     public void setStateBarber(String routeImg){
         stateBarber.setIconRelative(routeImg);
+        if (routeImg.equals(Constant.IMG_HAIRCUT)) labelStateBarber.setText("Trabajando");
+        else labelStateBarber.setText("Durmiendo");
     }
 }

@@ -7,6 +7,7 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class JDialogStatistic extends JDialog {
+    JFrame frame;
     public JDialogStatistic(ActionListener listener, Window window) {
         setSize(new Dimension(900,500));
         this.setTitle("Estadisticas");
