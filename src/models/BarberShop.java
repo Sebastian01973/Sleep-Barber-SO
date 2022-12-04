@@ -212,5 +212,7 @@ public class BarberShop {
         }
         return infoCustomer;
     }
-
+    public int sizeList(ArrayList<Object[]>  list){
+        return list.size();
+    }
 }

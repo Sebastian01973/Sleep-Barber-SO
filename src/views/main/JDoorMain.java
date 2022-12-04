@@ -30,7 +30,7 @@ public class JDoorMain extends JPanel {
 
         this.add(Box.createRigidArea(new Dimension(0,30)));
 
-        stateDoor = new JModelLabel(Constant.IMG_CLIENT_ENTERING);
+        stateDoor = new JModelLabel(Constant.IMG_DOOR);
         stateDoor.setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
         this.add(stateDoor);
 
