@@ -14,6 +14,16 @@ public class NameGenerator {
             "Juan",
             "Elvira",
             "Carlos",
+            "Sofia",
+            "Karen",
+            "Felipe",
+            "Hermencia",
+            "Luz",
+            "Amara",
+            "Yamile",
+            "Lisa",
+            "Bart",
+            "Homero",
     },
             apellidos = {  //Conjunto de apellidos posibles
                     "Muñoz",
@@ -23,7 +33,15 @@ public class NameGenerator {
                     "Peña",
                     "Sánchez",
                     "Domingo",
-                    "Dominguez"
+                    "Dominguez",
+                    "Martinez",
+                    "Acevedo",
+                    "Bernal",
+                    "Pena",
+                    "Casteblanco",
+                    "Suesca",
+                    "Jimenez",
+                    "Solano"
             };
 
     // Método que devuelve el nombre completo del cliente

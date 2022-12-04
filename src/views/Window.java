@@ -74,6 +74,11 @@ public class Window extends JFrame {
         jDialogStatistic.setVisible(status);
     }
 
+    public void setTimeSimulation(int time){
+        mainPanel.setTimeSimulation(time);
+    }
+
+
     public void addRowTableAttentionClient(Object[] vector){
         clientAttention.addRowTableAttentionClient(vector);
     }

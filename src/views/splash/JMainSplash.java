@@ -40,7 +40,7 @@ public class JMainSplash extends JPanel {
 
         add(Box.createRigidArea(new Dimension(0, 20)));
 
-        timeSimulation = new JSpinner(new SpinnerNumberModel(1, 1, 300, 1));
+        timeSimulation = new JSpinner(new SpinnerNumberModel(100, 1, 300, 1));
         ((DefaultFormatter) ((JSpinner.NumberEditor)timeSimulation.getEditor()).getTextField().getFormatter()).setAllowsInvalid(false);
         timeSimulation.setBorder(BorderFactory.createTitledBorder("Tiempo de Simulacion (Segundos)"));
         timeSimulation.setBackground(Constant.COLOR_WHITE);
@@ -57,7 +57,7 @@ public class JMainSplash extends JPanel {
 
         add(Box.createRigidArea(new Dimension(0, 20)));
 
-        timeNextClient = new JSpinner(new SpinnerNumberModel(1, 1, 50, 1));
+        timeNextClient = new JSpinner(new SpinnerNumberModel(2, 2, 50, 1));
         ((DefaultFormatter) ((JSpinner.NumberEditor)numSteps.getEditor()).getTextField().getFormatter()).setAllowsInvalid(false);
         timeNextClient.setBorder(BorderFactory.createTitledBorder("Tiempo maximo que llegue proximo cliente"));
         timeNextClient.setBackground(Constant.COLOR_WHITE);
@@ -65,7 +65,7 @@ public class JMainSplash extends JPanel {
 
         add(Box.createRigidArea(new Dimension(0, 20)));
 
-        timeMaxAttention = new JSpinner(new SpinnerNumberModel(1, 1, 50, 1));
+        timeMaxAttention = new JSpinner(new SpinnerNumberModel(2, 2, 50, 1));
         ((DefaultFormatter) ((JSpinner.NumberEditor)numSteps.getEditor()).getTextField().getFormatter()).setAllowsInvalid(false);
         timeMaxAttention.setBorder(BorderFactory.createTitledBorder("Tiempo maximo para atender un cliente"));
         timeMaxAttention.setBackground(Constant.COLOR_WHITE);

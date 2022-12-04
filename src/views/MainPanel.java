@@ -39,8 +39,9 @@ public class MainPanel extends JPanel {
         this.add(jBarberMain,BorderLayout.WEST);
 
     }
-
-
+    public void setTimeSimulation(int time){
+        jHeaderMain.setTimeSimulation(time);
+    }
     public void setIconBarber(String path){
         jBarberMain.setIconBarber(path);
     }
