@@ -11,7 +11,7 @@ public class JBarberMain extends JPanel {
 
 
     JModelLabel stateBarber, labelStateBarber,titleBarber;
-    JLabel timeAttention;
+    JLabel timeAttention,idClient;
 
 
     public JBarberMain(ActionListener actionListener) {
@@ -45,6 +45,12 @@ public class JBarberMain extends JPanel {
         this.add(labelStateBarber);
 
         this.add(Box.createRigidArea(new Dimension(0,20)));
+        idClient = new JLabel("Id Cliente:");
+        idClient.setFont(Constant.FONT_ARIAL_ROUNDER_20);
+        idClient.setBackground(Constant.COLOR_WHITE);
+        idClient.setForeground(Constant.COLOR_BLACK);
+        idClient.setAlignmentX(LEFT_ALIGNMENT);
+        this.add(idClient);
 
         timeAttention = new JLabel("Tiempo corte:");
         timeAttention.setFont(Constant.FONT_ARIAL_ROUNDER_20);
@@ -70,6 +76,9 @@ public class JBarberMain extends JPanel {
 
     public void setStateBarberLa1bel(String text){
         stateBarber.setText(text);
+    }
+    public void setIdClient(int id){
+        idClient.setText("Id Cliente: " +id);
     }
     public void setStateBarber(String routeImg){
         stateBarber.setIconRelative(routeImg);

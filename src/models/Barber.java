@@ -15,6 +15,7 @@ public class Barber extends Thread {
     private final int timeMaxShaving;
     private String name;
     private long timeShaving;
+    private int idClient;
 
     /**
      * Constructor of Barber
@@ -50,6 +51,9 @@ public class Barber extends Thread {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+    }
+    public int getIdClient(){
+        return idClient;
     }
     public int getTimeShaving(){
         return (int) timeShaving;

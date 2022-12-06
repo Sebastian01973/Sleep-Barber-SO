@@ -13,13 +13,13 @@ public class PieGraphic{
         int degree2 = (int) (v2 * 360/sum);
 
         g.setColor(color1);
-        g.fillArc(0,0,200,200,0,degree1);
-        g.fillRect(210,30,20,20);
-        g.drawString(name1, 240,45);
+        g.fillArc(60,20,200,200,0,degree1);
+        g.fillRect(270,50,20,20);
+        g.drawString(name1, 300,65);
 
         g.setColor(Constant.COLOR_ORANGE_1);
-        g.fillArc(0,0,200,200,degree1,degree2);
-        g.fillRect(210,60,20,20);
-        g.drawString(name2, 240,75);
+        g.fillArc(60,20,200,200,degree1,degree2);
+        g.fillRect(270,80,20,20);
+        g.drawString(name2, 300,95);
     }
 }

@@ -16,7 +16,7 @@ public class JDialogStatistic extends JDialog {
     private JPanel panelCenter;
     public JDialogStatistic(ActionListener listener, Window window) {
         this.setBackground(Constant.COLOR_WHITE);
-        setSize(new Dimension(800,500));
+        setSize(new Dimension(500,350));
         this.setTitle("Estadisticas");
         setLocationRelativeTo(null);
         this.setLocationRelativeTo(window);

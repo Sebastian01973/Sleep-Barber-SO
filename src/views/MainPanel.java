@@ -81,4 +81,7 @@ public class MainPanel extends JPanel {
     public void setOccupiedChairs(int noAvailableChairs){
         jTableCenter.setOccupiedChairs(noAvailableChairs);
     }
+    public void setIdClient(int id){
+        jBarberMain.setIdClient(id);
+    }
 }

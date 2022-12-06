@@ -122,5 +122,8 @@ public class Window extends JFrame {
     public void paintPie(int v1, int v2){
         jDialogStatistic.paintPie(v1,v2);
     }
+    public void setIdClient(int id){
+        mainPanel.setIdClient(id);
+    }
     }
 
