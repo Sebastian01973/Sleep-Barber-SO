@@ -9,9 +9,7 @@ import views.Window;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Time;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicInteger;
 
 import static java.lang.Thread.sleep;
 
@@ -19,7 +17,6 @@ public class Presenter implements ActionListener {
 
     private Window window;
     private BarberShop shop;
-    AtomicInteger timeShavingAt = new AtomicInteger();
 
     public Presenter() {
         this.window = new Window(this);
@@ -87,7 +84,6 @@ public class Presenter implements ActionListener {
                         window.shopState(Constant.IMG_CLIENT_LEAVING);
                     }
                     else window.shopState(Constant.IMG_CLIENT_ENTERING);
-                    timeShavingAt.set(barber.getTimeShaving());
                     counter++;
 
                 } catch (InterruptedException e) {
@@ -96,14 +92,15 @@ public class Presenter implements ActionListener {
             }
         }).start();
 
-        Timer timer = new Timer((500), e -> {
+        Timer timer = new Timer((1000), e -> {
             if(!shop.isBarberSleeping()) {
-                if (timeShavingAt.get()>0) window.setTimeAttentionBarber(timeShavingAt.getAndDecrement());
-                else window.setTimeAttentionBarber(0);
+                window.setTimeAttentionBarber(barber.getTimeShaving());
                 window.setStateBarber(Constant.IMG_HAIRCUT);
+                window.setIdClient(barber.getIdClient());
             }
             else {
                 window.setTimeAttentionBarber(0);
+                window.setIdClient(0);
                 window.setStateBarber(Constant.IMG_SLEEP_BARBER);
                 window.shopState(Constant.IMG_DOOR);
             }

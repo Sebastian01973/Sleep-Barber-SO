@@ -15,6 +15,7 @@ public class Barber extends Thread {
     private final int timeMaxShaving;
     private String name;
     private long timeShaving;
+    private int idClient;
 
     /**
      * Constructor of Barber
@@ -44,6 +45,7 @@ public class Barber extends Thread {
     private void shavingCustomer(Customer customer) {
         try {
             timeShaving = (long) (Math.random() * (timeMaxShaving) + 1);
+            idClient=customer.getIdCustomer();
             sleep(TimeUnit.SECONDS.toMillis(timeShaving));
             customer.setTimeShaving((int) timeShaving);
             System.out.println("CUSTOMER: " + this.getNameBarber() + "     Shaving time: " + timeShaving + "  for customer: " + customer.getIdCustomer());
@@ -53,6 +55,9 @@ public class Barber extends Thread {
     }
     public int getTimeShaving(){
         return (int) timeShaving;
+    }
+    public int getIdClient(){
+        return idClient;
     }
     /**
      * Gets the barber name

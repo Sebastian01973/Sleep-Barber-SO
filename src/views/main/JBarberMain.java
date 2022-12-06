@@ -11,7 +11,7 @@ public class JBarberMain extends JPanel {
 
 
     JModelLabel stateBarber, labelStateBarber,titleBarber;
-    JLabel timeAttention;
+    JLabel timeAttention, idClient;
 
 
     public JBarberMain(ActionListener actionListener) {
@@ -45,11 +45,16 @@ public class JBarberMain extends JPanel {
         this.add(labelStateBarber);
 
         this.add(Box.createRigidArea(new Dimension(0,20)));
+        idClient = new JLabel("Id Cliente:");
+        idClient.setFont(Constant.FONT_ARIAL_ROUNDER_20);
+        idClient.setBackground(Constant.COLOR_WHITE);
+        idClient.setForeground(Constant.COLOR_BLACK);
+        idClient.setAlignmentX(LEFT_ALIGNMENT);
+        this.add(idClient);
 
         timeAttention = new JLabel("Tiempo corte:");
         timeAttention.setFont(Constant.FONT_ARIAL_ROUNDER_20);
         timeAttention.setBackground(Constant.COLOR_WHITE);
-        timeAttention.setForeground(Constant.COLOR_BLACK);
         timeAttention.setForeground(Constant.COLOR_BLACK);
         timeAttention.setAlignmentX(LEFT_ALIGNMENT);
         this.add(timeAttention);
@@ -71,9 +76,12 @@ public class JBarberMain extends JPanel {
     public void setStateBarberLa1bel(String text){
         stateBarber.setText(text);
     }
+    public void setIdClient(int id){
+        idClient.setText("Id Cliente: " +id);
+    }
     public void setStateBarber(String routeImg){
         stateBarber.setIconRelative(routeImg);
-        if (routeImg.equals(Constant.IMG_HAIRCUT)) labelStateBarber.setText("Trabajando");
-        else labelStateBarber.setText("Durmiendo");
+        if (routeImg.equals(Constant.IMG_HAIRCUT)) labelStateBarber.setText("Working");
+        else labelStateBarber.setText("Sleeping");
     }
 }

@@ -14,9 +14,10 @@ public class JDialogStatistic extends JDialog {
     private LabelPieChart pieGraphic;
     private JModelLabel titleAttention;
     private JPanel panelCenter;
+
     public JDialogStatistic(ActionListener listener, Window window) {
         this.setBackground(Constant.COLOR_WHITE);
-        setSize(new Dimension(800,500));
+        setSize(new Dimension(500,350));
         this.setTitle("Estadisticas");
         setLocationRelativeTo(null);
         this.setLocationRelativeTo(window);
@@ -42,7 +43,6 @@ public class JDialogStatistic extends JDialog {
     public void paintPie(int v1, int v2){
         panelCenter.remove(pieGraphic);
         pieGraphic = new LabelPieChart(v1,v2,"Clientes atendidos: " + v1,"Clientes no atendidos: " +v2);
-        pieGraphic.setBorder(BorderFactory.createEmptyBorder(10,10,0,10));
         panelCenter.add(pieGraphic);
     }
 }
