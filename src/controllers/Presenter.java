@@ -88,7 +88,18 @@ public class Presenter implements ActionListener {
         thread.interrupt();
         System.out.println("Finalizo la simulacion");
     }
-
+    public void manageBarberView(Barber barber){
+        if (!shop.isBarberSleeping()) {
+            window.setTimeAttentionBarber(barber.getTimeShaving());
+            window.setStateBarber(Constant.IMG_HAIRCUT);
+            window.setIdClient(barber.getIdClient());
+        } else {
+            window.setTimeAttentionBarber(0);
+            window.setIdClient(-1);
+            window.setStateBarber(Constant.IMG_SLEEP_BARBER);
+            window.shopState(Constant.IMG_DOOR);
+        }
+    }
 
     private void startSimulation() {
         String[] data = window.getDatesSimulation();
@@ -128,16 +139,7 @@ public class Presenter implements ActionListener {
         thread.start();
 
         timer = new Timer((1000), e -> {
-            if (!shop.isBarberSleeping()) {
-                window.setTimeAttentionBarber(barber.getTimeShaving());
-                window.setStateBarber(Constant.IMG_HAIRCUT);
-                window.setIdClient(barber.getIdClient());
-            } else {
-                window.setTimeAttentionBarber(0);
-                window.setIdClient(0);
-                window.setStateBarber(Constant.IMG_SLEEP_BARBER);
-                window.shopState(Constant.IMG_DOOR);
-            }
+           this.manageBarberView(barber);
         });
         timer.start();
 
@@ -145,10 +147,8 @@ public class Presenter implements ActionListener {
             window.setAvailable(shop.getSeatsAvailable());
             window.setOccupiedChairs(shop.getOccupiedSeats());
             window.refreshTableCenter(shop.takeInfoCustomerShop());
-
             window.refreshTableAttentionClient(shop.takeInfoCustomerExit()); //Refreza la tabla de atencion al cliente
             window.refreshTableAttentionNoClient(shop.takeInfoCustomerNoAttended()); // Refresca la tabla de no atencion al cliente
-
         });
         timer2.start();
     }

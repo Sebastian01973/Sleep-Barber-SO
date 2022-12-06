@@ -36,14 +36,14 @@ public class JDoorMain extends JPanel {
 
         this.add(Box.createRigidArea(new Dimension(0,20)));
 
-        IdClient = new JModelLabel("ID: ",Constant.FONT_ARIAL_ROUNDER_20,Constant.COLOR_WHITE,Constant.COLOR_BLACK);
+        IdClient = new JModelLabel("",Constant.FONT_ARIAL_ROUNDER_20,Constant.COLOR_WHITE,Constant.COLOR_BLACK);
         IdClient.setColorPaint(Constant.COLOR_WHITE);
         IdClient.setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
         this.add(IdClient);
 
         this.add(Box.createRigidArea(new Dimension(0,20)));
 
-        timeAttention = new JModelLabel("Prioridad",Constant.FONT_ARIAL_ROUNDER_20,Constant.COLOR_WHITE,Constant.COLOR_BLACK);
+        timeAttention = new JModelLabel("",Constant.FONT_ARIAL_ROUNDER_20,Constant.COLOR_WHITE,Constant.COLOR_BLACK);
         timeAttention.setColorPaint(Constant.COLOR_WHITE);
         timeAttention.setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
         this.add(timeAttention);
@@ -52,7 +52,7 @@ public class JDoorMain extends JPanel {
 
     }
     public void setPriorityCustomer(int timeAtt){
-        timeAttention.setText("Prioridad: " + timeAtt);
+       timeAttention.setText("Prioridad: " + timeAtt);
     }
     public void setIdCustomer(int idCustomer){
         IdClient.setText("ID: " + idCustomer);
