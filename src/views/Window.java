@@ -27,6 +27,7 @@ public class Window extends JFrame {
 //        this.setExtendedState(MAXIMIZED_BOTH);
         this.setSize(new Dimension((int) (Constant.SCREEN_SIZE.getWidth()*0.7),(int) (Constant.SCREEN_SIZE.getHeight()*0.7)));
         this.setMinimumSize(new Dimension((int) (Constant.SCREEN_SIZE.getWidth()*0.7),(int) (Constant.SCREEN_SIZE.getHeight()*0.7)));
+        this.setLocationRelativeTo(null);
         initComponents(listener);
         this.setVisible(false);
     }
