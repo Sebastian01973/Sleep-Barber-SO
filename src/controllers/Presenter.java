@@ -23,12 +23,13 @@ public class Presenter implements ActionListener {
 
     private Timer timer,timer2;
     private int counter = 0;
+
+    public AtomicInteger countTimeSimulaion = new AtomicInteger();
     private Thread thread;
 
     public Presenter() {
         this.window = new Window(this);
         window.setVisibleSplash(true);
-
     }
 
     @Override
@@ -103,7 +104,7 @@ public class Presenter implements ActionListener {
 
     private void startSimulation() {
         String[] data = window.getDatesSimulation();
-        int timeSimulat = Integer.parseInt(data[0]);
+        countTimeSimulaion.set(Integer.parseInt(data[0]));
         int numSeats = Integer.parseInt(data[1]);
         int timeNextCustomer = Integer.parseInt(data[2]);
         int timeShaving = Integer.parseInt(data[3]);
@@ -113,8 +114,9 @@ public class Presenter implements ActionListener {
         Barber barber = new Barber("SOFIA BARBERA", timeShaving, shop);
         barber.start();
 
+        //sala de espera, logica
         thread = new Thread(() -> {
-            while (true) {
+            while (countTimeSimulaion.get() >= 0) {
                 try {
                     int nextTimeRandom = generateRandomNumber(timeNextCustomer);
                     System.out.println("Random de numero: " + timeNextCustomer + " - Random: " + nextTimeRandom);
@@ -132,17 +134,22 @@ public class Presenter implements ActionListener {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-
             }
         }
         );
         thread.start();
 
+        //Actualiza la imagen del barbero
         timer = new Timer((1000), e -> {
-           this.manageBarberView(barber);
+            this.manageBarberView(barber);
+            int time = countTimeSimulaion.decrementAndGet();
+            if(countTimeSimulaion.get() >=0)
+                window.setTimeSimulation(time);
+
         });
         timer.start();
 
+        //Actualiza tablas
         timer2 = new Timer((500), e -> {
             window.setAvailable(shop.getSeatsAvailable());
             window.setOccupiedChairs(shop.getOccupiedSeats());
