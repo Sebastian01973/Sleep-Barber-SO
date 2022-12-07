@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="sleeping-barber:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/sleeping_barber_jar</output-path>
+    <root id="archive" name="sleeping-barber.jar">
+      <element id="module-output" name="sleeping-barber" />
+      <element id="library" level="project" name="jfreechart-1.0.19-demo" />
+      <element id="library" level="project" name="jcommon-1.0.23" />
+    </root>
+  </artifact>
+</component>

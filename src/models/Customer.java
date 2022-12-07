@@ -41,11 +41,18 @@ public class Customer extends Thread implements Comparable<Customer> {
         exit(this.state);
     }
 
+    /**
+     * @description: Function for a customer enter the shop.
+     */
     private void enterToShop() {
         shop.enterCustomer(this);
         System.out.println(this.name + " entered the shop! With priority: " + this.priority);
     }
 
+    /**
+     * @param result Specifies if the customer was served or not.
+     * @description: Function for a customer exit the shop.
+     */
     private void exit(boolean result) {
         System.out.println(this.name + " exited the shop " + (result ? "WITH haircut" : "WITHOUT haircut"));
     }
@@ -57,6 +64,10 @@ public class Customer extends Thread implements Comparable<Customer> {
         return this.priority;
     }
 
+    /**
+     * @param state Specifies the state of the customer.
+     * @description: Function for set the state of the customer.
+     */
     public void setState(boolean state) {
         this.state = state;
     }

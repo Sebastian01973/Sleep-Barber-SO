@@ -28,9 +28,18 @@ public class BarberShop {
      */
     private final ArrayList<Customer> listCustomerExit;
 
+    /**
+     * Number of seats occupied.
+     */
     private int occupiedSeats;
     private boolean done = false;
+    /**
+     * State of the barber.
+     */
     private boolean barberSleeping ;
+    /**
+     * Time of the shaving.
+     */
     private int timeShaving;
 
     /**
@@ -166,6 +175,10 @@ public class BarberShop {
     private boolean isSeatsEmpty() {
         return customersInShop.size() == 0;
     }
+
+    /**
+     * @return Returns true if the shop is full.
+     */
     public boolean isShopFull(){
         return customersInShop.size()==numSeats;
     }
@@ -181,6 +194,9 @@ public class BarberShop {
     }
 
 
+    /**
+     * @return Returns information of customers in the shop now.
+     */
     public ArrayList<Object[]> takeInfoCustomerShop() {
         ArrayList<Object[]> infoCustomer = new ArrayList<>();
         for (Customer customer : customersInShop) {
@@ -189,12 +205,17 @@ public class BarberShop {
         return infoCustomer;
     }
 
+    /**
+     * @return Returns true if the barber is sleeping.
+     */
     public boolean isBarberSleeping() {
         return this.barberSleeping;
     }
 
 
-
+    /**
+     * @return Returns information about the customer exit of the store.
+     */
     // Info: IDCustomer, NameCustomer, Priority, TimeShaving.
     public ArrayList<Object[]> takeInfoCustomerExit() {
         ArrayList<Object[]> infoCustomer = new ArrayList<>();
@@ -203,6 +224,10 @@ public class BarberShop {
         }
         return infoCustomer;
     }
+
+    /**
+     * @return Returns information about the customers who left the store.
+     */
     public ArrayList<Object[]> takeInfoCustomerNoAttended() {
         ArrayList<Object[]> infoCustomer = new ArrayList<>();
         for (Customer customer : listCustomerExit) {

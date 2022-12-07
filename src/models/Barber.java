@@ -14,7 +14,13 @@ public class Barber extends Thread {
      */
     private final int timeMaxShaving;
     private String name;
+    /**
+     * Time of shaving the hair.
+     */
     private long timeShaving;
+    /**
+     * Identifier of the barber.
+     */
     private int idClient;
 
     /**
@@ -56,6 +62,10 @@ public class Barber extends Thread {
     public int getIdClient(){
         return idClient;
     }
+
+    /**
+     * @return Returns time shaving for a customer.
+     */
     public int getTimeShaving(){
         return (int) timeShaving;
     }

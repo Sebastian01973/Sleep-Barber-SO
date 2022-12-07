@@ -16,7 +16,7 @@ public class ImageSplash extends JPanel {
     public ImageSplash(ActionListener actionListener) {
         setLayout(null);
         setBackground(Color.BLACK);
-        exitButton = new RoundedJButton(Constant.EXIT, Command.B_EXIT.toString(), actionListener,Constant.COLOR_ORANGE_1,Color.white);
+        exitButton = new RoundedJButton(Constant.EXIT, Command.B_EXIT.toString(), actionListener,Constant.COLOR_ORANGE_2,Color.white);
         exitButton.setBounds(20,430,80,25);
         add(exitButton);
     }

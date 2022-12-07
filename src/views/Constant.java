@@ -39,7 +39,9 @@ public class Constant {
     public static final Color COLOR_BLUE_DARK_1 = Color.decode("#131921");
     public static final Color COLOR_BLUE_DARK_2 = Color.decode("#232f3e");
     public static final Color COLOR_ORANGE_1 = Color.decode("#ff9900");
+    public static final Color COLOR_ORANGE_2 = Color.decode("#FF4528");
     public static final Color COLOR_GREEN_1 = Color.decode("#5eb95e");
+    public static final Color BLUE = Color.decode("#0C45A6");
 
 
     //Fonts

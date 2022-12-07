@@ -73,7 +73,7 @@ public class JMainSplash extends JPanel {
 
         add(Box.createRigidArea(new Dimension(0, 30)));
 
-        startSimulation = new RoundedJButton("Iniciar Simulacion", Command.START_SIMULATION.toString(), actionListener, Constant.COLOR_GREEN_1,Color.WHITE);
+        startSimulation = new RoundedJButton("Iniciar Simulacion", Command.START_SIMULATION.toString(), actionListener, Constant.BLUE,Color.WHITE);
         startSimulation.setFont(Constant.FONT_ARIAL_ROUNDER_15);
         startSimulation.setAlignmentX(CENTER_ALIGNMENT);
         add(startSimulation);
